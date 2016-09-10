@@ -5,4 +5,5 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
   has_many :bill_connections
   has_many :bills , through: :bill_connections
+  has_many :bill_roles
 end

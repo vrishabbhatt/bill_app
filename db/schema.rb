@@ -11,10 +11,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160910141325) do
+ActiveRecord::Schema.define(version: 20160910173835) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "bill_actions", force: :cascade do |t|
+    t.datetime "created_at",                          null: false
+    t.datetime "updated_at",                          null: false
+    t.integer  "bill_role_id"
+    t.integer  "amount_paying",       default: 0
+    t.integer  "transacting_user_id"
+    t.boolean  "is_verified",         default: false
+  end
 
   create_table "bill_connections", force: :cascade do |t|
     t.datetime "created_at", null: false
@@ -23,14 +32,25 @@ ActiveRecord::Schema.define(version: 20160910141325) do
     t.integer  "bill_id"
   end
 
-  create_table "bills", force: :cascade do |t|
+  create_table "bill_roles", force: :cascade do |t|
     t.datetime "created_at",                   null: false
     t.datetime "updated_at",                   null: false
+    t.integer  "user_id"
+    t.integer  "bill_id"
+    t.integer  "amount_paid",      default: 0
+    t.integer  "remaining_amount", default: 0
+    t.boolean  "to_pay"
+  end
+
+  create_table "bills", force: :cascade do |t|
+    t.datetime "created_at",                            null: false
+    t.datetime "updated_at",                            null: false
     t.string   "bill_name"
     t.text     "bill_description"
-    t.integer  "total",            default: 0
+    t.integer  "total",                     default: 0
     t.integer  "primary_user_id"
-    t.integer  "no_of_users",      default: 0
+    t.integer  "no_of_users",               default: 0
+    t.integer  "default_individual_amount", default: 0
   end
 
   create_table "users", force: :cascade do |t|

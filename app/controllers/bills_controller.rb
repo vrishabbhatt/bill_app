@@ -2,6 +2,7 @@ class BillsController < ApplicationController
 	before_action :authenticate_user!
 	
 	def index
+		@bills = current_user.bills
 	end
 
 	def new
@@ -22,10 +23,12 @@ class BillsController < ApplicationController
 
 	def show
 		@bill = Bill.find(params[:id])
-		has_permission
 	end
 
 	def edit
+		@bill = Bill.find(params[:id])
+		has_permission
+
 	end
 
 	def update
