@@ -1,4 +1,9 @@
 Rails.application.routes.draw do
+  get 'warnings/unathorised_warning'
+
+  get 'static_pages/sample_page'
+  get 'static_pages/sample_form'
+
   devise_for :users
   get 'home/index'
 
@@ -8,6 +13,13 @@ Rails.application.routes.draw do
   # You can have the root of your site routed with "root"
   # root 'welcome#index'
   root 'home#index'
+   namespace :api do
+    namespace :v1 do
+      resources :bills, only: [:index, :create, :show, :update, :destroy]
+    end
+  end
+
+  resources :bills
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

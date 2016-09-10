@@ -1,0 +1,4 @@
+= simple_form_for @bill , url: api_v1_bills_path  do |f|
+	= f.input :bill_name
+	= f.input :bill_description
+	= f.submit 'save'

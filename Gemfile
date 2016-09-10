@@ -29,6 +29,7 @@ gem 'slim-rails'
 gem 'bootstrap-sass'
 gem 'jquery-turbolinks'
 gem 'devise'
+gem 'active_model_serializers'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
