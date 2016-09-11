@@ -4,5 +4,6 @@ class HomeController < ApplicationController
   		redirect_to bills_path
   	else
   		render 'pre_sign_up/index'
+  	end
   end
 end

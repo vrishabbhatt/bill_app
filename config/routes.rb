@@ -3,6 +3,7 @@ Rails.application.routes.draw do
 
   get 'static_pages/sample_page'
   get 'static_pages/sample_form'
+  get 'home' => 'pre_sign_up#index' , as: :pre_sign_up
 
   devise_for :users
   get 'home/index'

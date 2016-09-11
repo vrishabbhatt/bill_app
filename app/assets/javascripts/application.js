@@ -15,3 +15,13 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require_tree .
+
+$(document).on('ready page:load', function () {
+
+	$('#split_form_simple').click(function(){
+		var total = $('#total').val();
+  		var user_no = $('#users').val();
+  		console.log(total);
+	});
+
+});
