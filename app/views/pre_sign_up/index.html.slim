@@ -1,7 +1,7 @@
 h1.row.text-center Split bills with ease for certain cases
 .col-md-8.col-sm-6.col-md-offset-2
 	.sample-form-1.col-centered
-		= form_tag(root_path, method: "post" ,remote: true , class: "form-horizontal well") do
+		= form_tag(index_bill_save_path, method: "post" ,remote: true , class: "form-horizontal well") do
 			.row.form-group
 					.text-left
 						= label_tag(:users, "Number of users" , class: "control-label")

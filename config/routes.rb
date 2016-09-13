@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   get 'static_pages/sample_page'
   get 'static_pages/sample_form'
   get 'home' => 'pre_sign_up#index' , as: :pre_sign_up
+  post 'home/home_bill_save' => 'pre_sign_up#index_bill_save' , as: :index_bill_save
 
   devise_for :users
   get 'home/index'
