@@ -12,11 +12,28 @@ h1.row.text-center Split bills with ease for certain cases
 		  		= text_field_tag(:total , nil , class: "form-control")
 		  	.row.form-group	
 		  		.inline-bock
-		  			.submit.text-center.btn.btn-success.col-md-6.col-sm-8.col-sm-offset-2#split_form_simple
+		  			.submit.text-center.btn.btn-success.col-md-6.col-sm-8.col-sm-offset-2.col-md-offset-3#split_form_simple
 			  			| split evenly
-			  		.text-center.col-md-6.col-sm-8.col-sm-offset-2.btn.btn-primary#split_form_further
+			  		.text-center.col-md-6.col-sm-8.col-sm-offset-2.btn.btn-primary.col-md-offset-3#split_form_complex
 				  		| It's complicated
+			br
+			br
+			.row.form-group.hidden#sample_form_result
+				.text-left
+					= label_tag(:default_individual_amount , "individual amount" , class: "control-label")
+				= text_field_tag(:default_individual_amount , nil , class: "form-control" , readonly: true)
+			br
+			br
+			.hidden#complex-form-generation
+			.hidden#complex-form-result-button
+				.text-center
+					.btn.btn-success
+						|split to find individual amounts
+
+			.hidden#submit-button
+				.text-center
+					= submit_tag("Sign up and save" , class: "btn btn-primary")
 
 
-
-.row.hidden#simple_form_result
+.col-md-8.col-md-offset-2.well.text-center.hidden#complex-form-result
+		
