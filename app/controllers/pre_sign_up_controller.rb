@@ -3,6 +3,7 @@ class PreSignUpController < ApplicationController
 	end
 
 	def index_bill_save
+		bill = Bill.new
 		redirect_to root_path
 	end
 end
