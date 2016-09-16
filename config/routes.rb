@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   get 'home' => 'pre_sign_up#index' , as: :pre_sign_up
   post 'home/home_bill_save' => 'pre_sign_up#index_bill_save' , as: :index_bill_save
 
-  devise_for :users
+  devise_for :users , :controllers => {:registrations => "user_registeration"}
   get 'home/index'
 
   # The priority is based upon order of creation: first created -> highest priority.
