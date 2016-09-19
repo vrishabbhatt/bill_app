@@ -4,4 +4,17 @@
 	=f.input :bill_description
 	=f.input :total
 	=f.input  :no_of_users
-	=f.submit 'save'
+	.text-center
+		.btn.btn-warning#bill-split
+			| find individual amount to be paid
+	#bill_roles.hidden	
+		= f.simple_fields_for :bill_roles do |bill_role|
+		    = render 'bill_role_fields', f: bill_role
+		.links
+		    	= link_to_add_association 'add bill roles', f, :bill_roles
+	
+	.hidden#bill-simple-result
+		= f.input :default_individual_amount , readonly: true
+
+		.hidden.text-center
+			= f.submit 'save' , class:  "btn btn-success"

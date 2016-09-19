@@ -14,6 +14,7 @@
 //= require jquery.turbolinks
 //= require jquery_ujs
 //= require turbolinks
+//= require cocoon
 //= require_tree .
 
 $(document).on('ready page:load', function () {
@@ -115,5 +116,17 @@ $(document).on('ready page:load', function () {
   		var offset = $complex_result.offset();
       	window.scrollTo(offset.left , offset.top);
 	});
+
+  $('#bill-split').click(function(){
+
+    $('#bill_default_individual_amount').val(0);
+    var total = $('#bill_total').val();
+    var user_no = $('#bill_no_of_users').val();
+    var individual_user_amount = total/user_no ;
+    console.log(individual_user_amount);
+    $('#bill_default_individual_amount').val(individual_user_amount);
+    $('#bill-simple-result').removeClass('hidden');
+
+  })
 
 });

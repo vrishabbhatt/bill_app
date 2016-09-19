@@ -39,7 +39,7 @@ class BillsController < ApplicationController
 
 	private
 		def bill_params
-			params.require(:bill).permit(:bill_name , :bill_description , :total , :no_of_users)
+			params.require(:bill).permit(:bill_name , :bill_description , :total , :no_of_users , :default_individual_amount ,bill_roles: [:id, :_destroy])
 		end
 
 		def has_permission
