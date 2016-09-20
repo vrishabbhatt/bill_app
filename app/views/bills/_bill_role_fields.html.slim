@@ -1,4 +1,5 @@
 .nested-fields
-  = f.input :user_id
-  = f.input :amount_paid
-  = link_to_remove_association "remove task", f
+  = f.input :user_email , label: "enter the email of the user" , placeholder:  "enter the other partys email here so he can be a part of this bill"
+  = f.input :amount_paid , label: "contribution to the bill" , placeholder: "please enter 0 if the other party is yet to pay"
+  .hidden
+  	= link_to_remove_association "remove role	", f

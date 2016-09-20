@@ -127,6 +127,21 @@ $(document).on('ready page:load', function () {
     $('#bill_default_individual_amount').val(individual_user_amount);
     $('#bill-simple-result').removeClass('hidden');
 
-  })
+    if (user_no>0)
+    {
+      $('#bill_roles').removeClass('hidden');
+      for(i=0;i<user_no;i++)
+      {
+        console.log("should be clicking");
+        $('.add_fields').trigger('click');
+      }
+      $('.links').addClass('hidden');
+
+    }
+    $('#form-save').removeClass('hidden');
+    $(this).text("reset and refresh splitting");
+  });
+
+
 
 });

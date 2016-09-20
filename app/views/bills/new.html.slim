@@ -7,14 +7,14 @@
 	.text-center
 		.btn.btn-warning#bill-split
 			| find individual amount to be paid
+	.hidden#bill-simple-result
+		= f.input :default_individual_amount , readonly: true
 	#bill_roles.hidden	
 		= f.simple_fields_for :bill_roles do |bill_role|
 		    = render 'bill_role_fields', f: bill_role
-		.links
+		.links.btn.btn-success
 		    	= link_to_add_association 'add bill roles', f, :bill_roles
-	
-	.hidden#bill-simple-result
-		= f.input :default_individual_amount , readonly: true
 
-		.hidden.text-center
+	.hidden.text-center#form-save
 			= f.submit 'save' , class:  "btn btn-success"
+
