@@ -1,0 +1,14 @@
+| This is to edit the bill
+= simple_form_for @bill do |f|
+	=f.input :bill_name
+	=f.input :bill_description
+	=f.input :total
+	=f.input  :no_of_users ,readonly: true
+	#bill_roles
+		= f.simple_fields_for :bill_roles do |bill_role|
+			= render 'bill_role_edit_fields', f: bill_role
+			/ = User.find(bill_role.user_id).email
+		.links.btn.btn-success
+		    	= link_to_add_association 'add bill roles', f, :bill_roles
+	.text-center
+		=f.submit 'update' , class: "btn btn-default"

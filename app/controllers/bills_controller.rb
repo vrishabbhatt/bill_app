@@ -2,7 +2,7 @@ class BillsController < ApplicationController
 	before_action :authenticate_user!
 	
 	def index
-		@bills = current_user.bills
+		@bills = Bill.created_by(current_user.id)
 	end
 
 	def new
@@ -12,7 +12,8 @@ class BillsController < ApplicationController
 	def create
 		@bill = Bill.new(bill_params)
 		@bill.primary_user_id = current_user.id
-		create_primary_bill_connection
+		@bill.generate_role_for_primary_user(current_user.id)
+		# create_primary_bill_connection		
 		if @bill.save
 			unless params[:bill][:bill_roles_attributes].blank?
 				user_email = Array.new
@@ -40,6 +41,7 @@ class BillsController < ApplicationController
 	end
 
 	def update
+		@bill = Bill.find(params[:id])
 	end
 
 	def destroy 
@@ -56,9 +58,10 @@ class BillsController < ApplicationController
 			end
 		end
 
-		def	create_primary_bill_connection
-			bill_connection = BillConnection.new(user_id: current_user.id , bill_id: @bill.id)
-		end
+		# def	create_primary_bill_connection
+		# 	bill_connection = BillConnection.new(user_id: current_user.id , bill_id: @bill.id)
+		# 	bill_connection.save
+		# end
 
 		def find_or_create_user_for_bill_roles user_array
 			i = 0

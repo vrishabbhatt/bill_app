@@ -1,1 +1,14 @@
-| lot left to do
+| lot left to 
+
+.col-md-12
+	.text-center
+		- @bills.each do |bill|
+			.col-md-8.col-md-offset-2.well
+				.row
+					= bill.bill_name
+					br
+					= link_to "edit this bill" , edit_bill_path(bill.id)
+
+.row
+	.text-center
+		 = link_to 

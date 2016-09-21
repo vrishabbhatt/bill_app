@@ -15,4 +15,5 @@ class User < ActiveRecord::Base
     return false if skip_password_validation
     super
   end
+
 end
