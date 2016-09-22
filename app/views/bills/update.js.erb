@@ -1,0 +1,6 @@
+ var total = $('#bill_total').val();
+ var user_no = $('#bill_no_of_users').val();
+ var individual_user_amount = total/user_no;
+ $('#bill_default_individual_amount').val(individual_user_amount);
+ $('#default-individual-amount').text(individual_user_amount);
+ console.log(total);

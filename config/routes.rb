@@ -23,6 +23,9 @@ Rails.application.routes.draw do
 
   resources :bills
 
+  post '/bill/bill_roles' => 'bill_roles#create' , as: :bill_role_create
+  patch '/bill/bill_roles/:id' => 'bill_roles#update', as: :bill_role_update
+
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 

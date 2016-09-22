@@ -4,8 +4,9 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
   has_many :bill_connections
-  has_many :bills , through: :bill_connections
   has_many :bill_roles
+  has_many :bills , through: :bill_roles
+
 
   attr_accessor :skip_password_validation
 

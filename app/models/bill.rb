@@ -1,8 +1,8 @@
 class Bill < ActiveRecord::Base
 	has_many :bill_connections
-	has_many :users ,  through: :bill_connections
 	has_many :bill_roles
 	accepts_nested_attributes_for :bill_roles  ,reject_if: :all_blank, allow_destroy: true
+	has_many :users ,  through: :bill_connections
 
 	scope :created_by, ->(id){where(primary_user_id: id)}
 

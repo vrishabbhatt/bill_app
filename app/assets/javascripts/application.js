@@ -141,6 +141,16 @@ $(document).on('ready page:load', function () {
     $('#form-save').removeClass('hidden');
     $(this).text("reset and refresh splitting");
   });
+  $('#bill_total').change(function(){
+    var total = $(this).val();
+    var user_no = $('#bill_no_of_users').val();
+    var individual_user_amount = total/user_no;
+    $('#bill_default_individual_amount').val(individual_user_amount);
+    $('#default-individual-amount').text(individual_user_amount);
+    console.log(total);
+
+
+  });
 
 
 

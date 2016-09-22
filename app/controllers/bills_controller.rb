@@ -42,6 +42,12 @@ class BillsController < ApplicationController
 
 	def update
 		@bill = Bill.find(params[:id])
+		@bill.update(bill_edit_params)
+		respond_to do |format|
+			format.js{}
+			format.html{}
+		end
+
 	end
 
 	def destroy 
@@ -50,6 +56,10 @@ class BillsController < ApplicationController
 	private
 		def bill_params
 			params.require(:bill).permit(:bill_name , :bill_description , :total , :no_of_users , :default_individual_amount ,bill_roles_attributes: [:user_email,:amount_paid, :_destroy])
+		end
+
+		def bill_edit_params
+			params.require(:bill).permit(:bill_name , :bill_description , :total , :no_of_users , :default_individual_amount)
 		end
 
 		def has_permission

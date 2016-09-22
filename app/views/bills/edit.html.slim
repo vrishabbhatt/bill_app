@@ -1,14 +1,27 @@
 | This is to edit the bill
-= simple_form_for @bill do |f|
+= simple_form_for @bill , remote: true do |f|
 	=f.input :bill_name
 	=f.input :bill_description
 	=f.input :total
 	=f.input  :no_of_users ,readonly: true
-	#bill_roles
-		= f.simple_fields_for :bill_roles do |bill_role|
-			= render 'bill_role_edit_fields', f: bill_role
-			/ = User.find(bill_role.user_id).email
-		.links.btn.btn-success
-		    	= link_to_add_association 'add bill roles', f, :bill_roles
+	.hidden
+		=f.input :default_individual_amount , readonly: true
+
+	.text-center
+		h2 
+		 | Each member has to pay
+		h2#default-individual-amount = @bill.default_individual_amount
 	.text-center
 		=f.submit 'update' , class: "btn btn-default"
+
+- @bill.bill_roles.each do |bill_role|
+	.well
+		.row.h2 User email: 
+		h2 = User.find(bill_role.user_id).email
+		= bill_role.id
+		.row
+			= simple_form_for bill_role , url: bill_role_update_path(id: bill_role.id) , remote: true do |f|
+				=f.input :amount_paid
+				=f.input :remaining_amount
+				.text-center
+					=f.submit 'update' , class: "btn btn-danger"

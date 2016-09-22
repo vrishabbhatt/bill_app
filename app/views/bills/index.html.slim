@@ -7,7 +7,11 @@
 				.row
 					= bill.bill_name
 					br
-					= link_to "edit this bill" , edit_bill_path(bill.id)
+					.col-md-12
+						.col-md-6
+							= link_to "edit this bill" , edit_bill_path(bill.id)
+						.col-md-6
+							= link_to "view bill" ,  bill_path(bill.id)
 
 .row
 	.text-center
