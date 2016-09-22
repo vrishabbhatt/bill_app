@@ -1,5 +1,5 @@
 class BillsController < ApplicationController
-	before_action :authenticate_user!
+	before_action :authenticate_user! , :except => [:show]
 	
 	def index
 		@bills = Bill.created_by(current_user.id)
