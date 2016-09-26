@@ -17,8 +17,9 @@
 - unless @bill.bill_roles.count.blank?
 	- @bill.bill_roles.each do |bill_role|
 		.well
-			.row.h2 User email: 
-			h2 = User.find(bill_role.user_id).email
+			- unless bill_role.user_id.blank?
+				.row.h2 User email: 
+				h2 = User.find(bill_role.user_id).email
 			= bill_role.id
 			.row
 				= simple_form_for bill_role , url: bill_role_update_path(id: bill_role.id) , remote: true do |f|
