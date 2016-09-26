@@ -2,7 +2,8 @@ class Api::V1::BillsController < Api::V1::BaseController
 	
 	def show
 		bill = Bill.find(params[:id])
-		render(json: Api::V1::BillSerializer.new(bill).to_json)
+		# render(json: Api::V1::BillSerializer.new(bill).to_json)
+		render(json: BillSerializer.new(bill).to_json)
 	end
 
 	def index
@@ -11,7 +12,8 @@ class Api::V1::BillsController < Api::V1::BaseController
 			json:
 			ActiveModel::ArraySerializer.new(
         	bills,
-        	each_serializer: Api::V1::BillSerializer ,
+        	# each_serializer: Api::V1::BillSerializer ,
+        	each_serializer: BillSerializer ,
         	root: 'bills',
 			))
 	end

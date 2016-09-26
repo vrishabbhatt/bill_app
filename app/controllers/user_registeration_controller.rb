@@ -18,7 +18,6 @@ class UserRegisterationController <  Devise::RegistrationsController
 	    puts "-------------------$%_______"
 	    puts resource.id
 	    if params[:bill_id].blank?
-	    	puts "the fucker wasnt saved" 	
 	    else
 	    	@bill_id = params[:bill_id].to_s.to_i
 	    	puts "++++++++++++++++-----------------=================----------------"

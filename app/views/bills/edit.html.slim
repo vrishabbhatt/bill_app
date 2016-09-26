@@ -14,14 +14,15 @@
 	.text-center
 		=f.submit 'update' , class: "btn btn-default"
 
-- @bill.bill_roles.each do |bill_role|
-	.well
-		.row.h2 User email: 
-		h2 = User.find(bill_role.user_id).email
-		= bill_role.id
-		.row
-			= simple_form_for bill_role , url: bill_role_update_path(id: bill_role.id) , remote: true do |f|
-				=f.input :amount_paid
-				=f.input :remaining_amount
-				.text-center
-					=f.submit 'update' , class: "btn btn-danger"
+- unless @bill.bill_roles.count.blank?
+	- @bill.bill_roles.each do |bill_role|
+		.well
+			.row.h2 User email: 
+			h2 = User.find(bill_role.user_id).email
+			= bill_role.id
+			.row
+				= simple_form_for bill_role , url: bill_role_update_path(id: bill_role.id) , remote: true do |f|
+					=f.input :amount_paid
+					=f.input :remaining_amount
+					.text-center
+						=f.submit 'update' , class: "btn btn-danger"

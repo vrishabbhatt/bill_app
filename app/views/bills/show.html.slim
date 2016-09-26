@@ -1,8 +1,30 @@
-| bill name
-= @bill.bill_name
-br
-| bill description
-= @bill.bill_description
-br
-| total amount paid
-= @bill.total
+.well
+	h2.text-left
+		| bill name: 
+		= @bill.bill_name
+	br
+	h3.text-center
+		| bill description: 
+		= @bill.bill_description
+	br
+	h3
+		| total amount paid:
+		= @bill.total
+	br
+	h3 
+		| no of participating individuals 
+		= @bill.no_of_users
+
+	-if user_signed_in?
+		h4 nigga you signed in
+		- if current_user.id == @bill.primary_user_id
+			| yello
+			- @bill.bill_roles.each do |bill_role|
+				- unless bill_role.user_id.blank?
+					-a =  User.find_by(id: bill_role.user_id.to_i).email
+					br
+					= bill_role.amount_paid
+					br
+					= bill_role.remaining_amount
+	- else 
+		h2 why you not sign in bru

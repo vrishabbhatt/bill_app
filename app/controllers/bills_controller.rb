@@ -51,6 +51,7 @@ class BillsController < ApplicationController
 	end
 
 	def destroy 
+		@bill = Bill.find(params[:id])
 	end
 
 	private
