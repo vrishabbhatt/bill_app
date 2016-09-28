@@ -82,13 +82,13 @@ class BillsController < ApplicationController
 			end
 		end
 
-		def create_new_user_without_password user_email
-			user = User.new(email: user_email , registered: false)
-			user.skip_password_validation = true
-			user.save
-			#create mailer to be sent
-			puts "==========================="
-			puts user.id
-			user.id
-		end
+		# def create_new_user_without_password user_email
+		# 	user = User.new(email: user_email , registered: false)
+		# 	user.skip_password_validation = true
+		# 	user.save
+		# 	#create mailer to be sent
+		# 	puts "==========================="
+		# 	puts user.id
+		# 	user.id
+		# end
 end
