@@ -1,11 +1,10 @@
-| lot left to 
-
 .col-md-12
-	.text-center
+	ul.text-center
 		- @bills.each do |bill|
-			.col-lg-6.col-md-8.col-md-offset-2.col-sm-10.col-sm-offset-1.col-xs-12.well
-				.row
-					= bill.bill_name
+			li.col-lg-6.col-md-8.col-md-offset-2.col-sm-10.col-sm-offset-1.col-xs-12.well style="list-style: none;"
+				
+					.h1.bill-name
+						= bill.bill_name
 					br
 					.col-md-12
 						.col-md-6
@@ -13,6 +12,3 @@
 						.col-md-6
 							= link_to "view bill" ,  bill_path(bill.id)
 
-.row
-	.text-center
-		 = link_to 

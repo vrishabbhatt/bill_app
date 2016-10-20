@@ -18,6 +18,8 @@ class UserRegisterationController <  Devise::RegistrationsController
 	    puts "-------------------$%_______"
 	    puts resource.id
 	    if params[:bill_id].blank?
+	    	puts resource.email
+	    	Usermailer.welcome_mail(resource).deliver_later
 	    else
 	    	@bill_id = params[:bill_id].to_s.to_i
 	    	puts "++++++++++++++++-----------------=================----------------"
@@ -26,6 +28,7 @@ class UserRegisterationController <  Devise::RegistrationsController
 	    	bill.update(primary_user_id: resource.id)
 	    	bill.generate_role_for_primary_user(resource.id)
 	    	puts bill.bill_roles.last.user_id
+	    	Usermailer.welcome_and_continue_mail(resource , @bill_id )
 	    end
 	    yield resource if block_given?
 	    if resource.persisted?
